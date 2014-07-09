@@ -88,6 +88,9 @@ var newText = pp.runTemplate(compiled, data, "--Unknown--");
 
 ## 更高级一点的示例
 
+注意: 此部分功能用到了 with 和 eval , 所以和`strict mode`不兼容.
+
+
 模板中可以包含简单的代码和表达式
 
 比如这样: 注意紧接着 {{ 的那个`@`
