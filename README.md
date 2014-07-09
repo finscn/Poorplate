@@ -90,7 +90,7 @@ var newText = pp.runTemplate(compiled, data, "--Unknown--");
 
 模板中可以包含简单的代码和表达式
 
-比如这样: (注意紧接着 {{ 的那个`@`
+比如这样: 注意紧接着 {{ 的那个`@`
 
 ```
      Title: {{@ gender=="m"?"Mr":"Miss" }}
