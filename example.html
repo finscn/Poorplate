@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Poorplate Example</title>
+
+    <style type="text/css">
+    </style>
+    <script type="text/javascript" src="Poorplate.js"></script>
+
+    <script type="text/javascript">
+    window.onload = function() {
+        test();
+    }
+
+    function $id(id) {
+        return document.getElementById(id);
+    }
+
+    function test() {
+
+        var data = {
+            name: "Rocky",
+            age: "20",
+            gender: "m"
+        };
+
+        var plate= new Poorplate();
+        plate.updateDom($id("container"), data);
+    }
+
+    function foo() {
+        return new Date();
+    }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="container">
+        Name: {{name}}<br>
+        Age: {{age}}<br>
+        Gender: {{gender}}<br>
+        Title: {{@ gender=="m"?"Mr":"Miss" }}<br>
+        Time: {{@ foo(); }}<br>
+    </div>
+
+
+</body>
+
+</html>
