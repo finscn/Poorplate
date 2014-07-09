@@ -1,7 +1,7 @@
 Poorplate
 =========
 
-a simple JS template toolkit
+A simple JS template toolkit
 
 该工具非常简单, 就是把一段文本中的 `{{属性名}}` 替换成`数据对象`中相应的属性值
 
@@ -126,8 +126,6 @@ var newText = pp.runTemplate(compiled, data, "--Unknown--");
 
 
 ## 更高级一点的示例
-
-注意: 此部分功能用到了 with 和 eval , 所以和`strict mode`不兼容.
 
 
 模板中可以包含简单的代码和表达式
