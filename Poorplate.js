@@ -68,7 +68,7 @@ Poorplate.prototype = {
         for (var i = 0, len = compiledTmpl.length, sIdx = 0; i < len; i++) {
             var f = compiledTmpl[i];
             if (f.dynamic) {
-                if (f.depth>1) {
+                if (f.depth > 1) {
                     for (var j = 0, v = data; j < f.depth; j++) {
                         v = v[f.dynamic[j]]
                     }
