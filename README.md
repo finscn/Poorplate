@@ -97,8 +97,11 @@ var newText = pp.runTemplate(compiled, data, "--Unknown--");
      Time: {{@ foo(data) }}
 ```
 
-gender 为data对象的属性, 表达式为标准的js表达式
-foo 为在外部定义的函数, 函数的返回值 会替换
+gender 为data对象的属性, 表达式为标准的js表达式.
+
+foo 为在外部定义的函数, 函数的返回值用来做替换. 
+
+注意: runTemplate的第三参数不适用于函数的情况.
 
 ====================
 
