@@ -41,6 +41,7 @@ Poorplate.prototype = {
                         script: dynamic.substring(scriptLen)
                     });
                 } else {
+                    dynamic = dynamic.trim();
                     var deep = dynamic.indexOf(".") > 0;
                     deep && (dynamic = dynamic.split("."));
                     compiledTmpl.push({
