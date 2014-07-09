@@ -1,4 +1,5 @@
-"not use strict mode";
+
+"DON'T use strict Mode";
 
 var Poorplate = function(options) {
     for (var p in options) {
