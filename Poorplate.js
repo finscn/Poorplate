@@ -17,7 +17,10 @@ Poorplate.prototype = {
     updateDom: function(dom, data, noneValue) {
         var content = dom.innerHTML;
         var key = dom.id || content;
-        var compiledTmpl = this.cache[key] || this.compileTemplate(content);
+        if (!this.cache[key]) {
+            this.cache[key] = this.compileTemplate(content);
+        }
+        var compiledTmpl = this.cache[key];
         var newContent = this.runTemplate(compiledTmpl, data, noneValue);
         dom.innerHTML = newContent;
     },
