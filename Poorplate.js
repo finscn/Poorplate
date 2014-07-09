@@ -1,4 +1,3 @@
-
 "DON'T use strict Mode";
 
 var Poorplate = function(options) {
@@ -42,8 +41,11 @@ Poorplate.prototype = {
                         script: dynamic.substring(scriptLen)
                     });
                 } else {
+                    var deep = dynamic.indexOf(".") > 0;
+                    deep && (dynamic = dynamic.split("."));
                     compiledTmpl.push({
-                        dynamic: dynamic
+                        depth: deep ? dynamic.length : 1,
+                        dynamic: dynamic,
                     });
                 }
             } else {
@@ -62,10 +64,17 @@ Poorplate.prototype = {
         data = data || {};
         noneValue = noneValue || noneValue === 0 || noneValue === false ? noneValue : '';
         var rs = [];
+        var v;
         for (var i = 0, len = compiledTmpl.length, sIdx = 0; i < len; i++) {
             var f = compiledTmpl[i];
             if (f.dynamic) {
-                var v = data[f.dynamic];
+                if (f.depth>1) {
+                    for (var j = 0, v = data; j < f.depth; j++) {
+                        v = v[f.dynamic[j]]
+                    }
+                } else {
+                    v = data[f.dynamic];
+                }
                 rs[i] = v === null || v === undefined ? noneValue : v;
             } else if (f.script) {
                 var _s = undefined;
