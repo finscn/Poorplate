@@ -1,4 +1,4 @@
-"DON'T use strict Mode";
+"use strict";
 
 var Poorplate = function(options) {
     for (var p in options) {
@@ -17,7 +17,11 @@ Poorplate.prototype = {
     updateDom: function(dom, data, noneValue) {
         var content = dom.innerHTML;
         var key = dom.id || content;
-        var compiledTmpl = this.cache[key] || this.compileTemplate(content);
+        var compiledTmpl = this.cache[key];
+        if (!compiledTmpl) {
+            compiledTmpl = this.compileTemplate(content);
+            this.cache[key] = compiledTmpl;
+        }
         var newContent = this.runTemplate(compiledTmpl, data, noneValue);
         dom.innerHTML = newContent;
     },
@@ -37,8 +41,10 @@ Poorplate.prototype = {
                 compiledTmpl.push(template.substring(current, startIdx));
                 var dynamic = template.substring(begin, endIdx);
                 if (dynamic.indexOf(this.SCRIPT) === 0) {
+
                     compiledTmpl.push({
-                        script: dynamic.substring(scriptLen)
+                        // script: dynamic.substring(scriptLen)
+                        script: new Function("data", "with(data){ return " + dynamic.substring(scriptLen) + "; }")
                     });
                 } else {
                     dynamic = dynamic.trim();
@@ -78,10 +84,11 @@ Poorplate.prototype = {
                 }
                 rs[i] = v === null || v === undefined ? noneValue : v;
             } else if (f.script) {
-                var _s = undefined;
-                var script = "with(data){ _s=" + f.script + " }";
-                eval(script);
-                rs[i] = _s;
+                rs[i] = f.script(data);
+                // var _s = undefined;
+                // var script = "with(data){ _s=" + f.script + " }";
+                // eval(script);
+                // rs[i] = _s;
             } else {
                 rs[i] = f;
             }
