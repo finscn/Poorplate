@@ -4,6 +4,7 @@ var Poorplate = function(options) {
     for (var p in options) {
         this[p] = options[p];
     }
+    this.resetCache();
 };
 
 Poorplate.prototype = {
@@ -13,7 +14,11 @@ Poorplate.prototype = {
     END: "}}",
     SCRIPT: "@",
 
-    cache: {},
+    cache: null,
+    resetCache: function() {
+        this.cache = {};
+    },
+
     updateDom: function(dom, data, noneValue) {
         var content = dom.innerHTML;
         var key = dom.id || content;
@@ -85,10 +90,6 @@ Poorplate.prototype = {
                 rs[i] = v === null || v === undefined ? noneValue : v;
             } else if (f.script) {
                 rs[i] = f.script(data);
-                // var _s = undefined;
-                // var script = "with(data){ _s=" + f.script + " }";
-                // eval(script);
-                // rs[i] = _s;
             } else {
                 rs[i] = f;
             }
