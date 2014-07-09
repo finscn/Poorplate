@@ -24,8 +24,9 @@
             name: "Rocky",
             age: "20",
             gender: "m",
+            friends: [ 'a','b','c'],
             girlFriend: {
-                name: "Zero"
+                name: "Zero",
             }
         };
 
@@ -46,7 +47,8 @@
         Name: {{name}}<br>
         Age: {{age}}<br>
         Gender: {{gender}}<br>
-        GirlFriend Name: {{girlFriend.name}}<br>
+        GirlFriend: {{girlFriend.name}}<br>
+        friends: {{friends.0}},{{friends.1}},{{friends.2}}<br>
         Title: {{@ gender=="m"?"Mr":"Miss" }}<br>
         Time: {{@ foo(); }}<br>
     </div>
