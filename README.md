@@ -51,6 +51,45 @@ var newText = pp.runTemplate(compiled, data);
 ```
 
 
+当然 ,也支持多层属性, 例如这样:
+
+```
+{{aaa.bbb.ccc}}
+```
+
+数据:
+
+```
+var data = {
+	aaa : {
+		bbb : {
+		  ccc : "foo"
+		}
+	}
+}
+
+```
+如果有数组, 那么占位符这样写:
+
+```
+{{aaa.1.bbb}}
+```
+
+数据对象
+
+```
+var data = {
+	aaa : [ 123, { bbb : "foo" } ]
+}
+
+```
+
+我知道这很丑, 写成 ` {{aaa[1].bbb}}` 更好, 但是一切为了代码的精简 (其实是我懒).
+
+
+
+
+
 ## 稍微高级一点的示例
 
 `runTemplate`函数有第三个参数: 当属性值为null 或 undefined 时, 显示什么
