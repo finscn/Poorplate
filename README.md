@@ -10,7 +10,7 @@ a simple JS template toolkit
 
 ======================
 
-## 简单示例
+## 简单的示例
 
 
 
@@ -51,7 +51,7 @@ var newText = pp.runTemplate(compiled, data);
 ```
 
 
-## 稍微高级一点示例
+## 稍微高级一点的示例
 
 `runTemplate`函数有第三个参数: 当属性值为null 或 undefined 时, 显示什么
 
@@ -86,7 +86,7 @@ var newText = pp.runTemplate(compiled, data, "--Unknown--");
 ```
 
 
-## 更高级一点示例
+## 更高级一点的示例
 
 模板中可以包含简单的代码和表达式
 
