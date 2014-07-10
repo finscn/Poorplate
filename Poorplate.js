@@ -46,9 +46,7 @@ Poorplate.prototype = {
                 compiledTmpl.push(template.substring(current, startIdx));
                 var dynamic = template.substring(begin, endIdx);
                 if (dynamic.indexOf(this.SCRIPT) === 0) {
-
                     compiledTmpl.push({
-                        // script: dynamic.substring(scriptLen)
                         script: new Function("data", "with(data){ return " + dynamic.substring(scriptLen) + "; }")
                     });
                 } else {
